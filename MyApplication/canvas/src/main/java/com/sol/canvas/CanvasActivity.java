@@ -1,7 +1,11 @@
 package com.sol.canvas;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Surface;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class CanvasActivity extends AppCompatActivity {
+    SurfaceView sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +27,17 @@ public class CanvasActivity extends AppCompatActivity {
             return insets;
         });
 
-        SurfaceView sv = findViewById(R.id.surfaceView);
+        sv = findViewById(R.id.surfaceView);
         sv.setBackgroundColor(0Xffffffff);
+    }
+
+    /** called when the user taps the clear button */
+    public void clearButtonBehaviour(View view) {
+
+    }
+
+    /** called when the user taps the draw button */
+    public void drawButtonBehaviour(View view) {
+
     }
 }
