@@ -1,12 +1,12 @@
 package com.sol.canvas;
 
-import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.view.Surface;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.EditText;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class CanvasActivity extends AppCompatActivity {
     SurfaceView sv;
+    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class CanvasActivity extends AppCompatActivity {
 
         sv = findViewById(R.id.surfaceView);
         sv.setBackgroundColor(0Xffffffff);
+
+
     }
 
     /** called when the user taps the clear button */
@@ -38,6 +41,16 @@ public class CanvasActivity extends AppCompatActivity {
 
     /** called when the user taps the draw button */
     public void drawButtonBehaviour(View view) {
+        SurfaceHolder sh = sv.getHolder();
+        Canvas c = sh.lockCanvas();
+        paint.setStyle(Paint.Style.FILL);
+        c.drawColor(Color.BLACK);
+        c.drawCircle(10, 100, 30, paint);
+        sh.unlockCanvasAndPost(c);
 
+        //Graphics2D g = (Graphics2D) canvas.getGraphics();
+        //g.setColor(Color.black);
+        //bf.show();
+        //g.fillOval(width/2 - diameter/2, height/2 - diameter/2, diameter, diameter);
     }
 }
