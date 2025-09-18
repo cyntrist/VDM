@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -27,30 +28,49 @@ public class CanvasActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Handler handler = new Handler();
         sv = findViewById(R.id.surfaceView);
-        sv.setBackgroundColor(0Xffffffff);
-
-
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(Color.BLACK);
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                SurfaceHolder sh = sv.getHolder();
+                Canvas c = sh.lockCanvas();
+                c.drawColor(Color.WHITE);
+                //c.drawCircle(10, 100, 30, paint);
+                sh.unlockCanvasAndPost(c);
+            }
+        }, 100);
     }
 
     /** called when the user taps the clear button */
     public void clearButtonBehaviour(View view) {
-
+        SurfaceHolder sh = sv.getHolder();
+        Canvas c = sh.lockCanvas();
+        c.drawColor(Color.WHITE);
+        sh.unlockCanvasAndPost(c);
     }
 
     /** called when the user taps the draw button */
     public void drawButtonBehaviour(View view) {
         SurfaceHolder sh = sv.getHolder();
         Canvas c = sh.lockCanvas();
-        paint.setStyle(Paint.Style.FILL);
-        c.drawColor(Color.BLACK);
-        c.drawCircle(10, 100, 30, paint);
+        c.drawColor(Color.WHITE);
+        float width = sv.getWidth();
+        float height = sv.getHeight();
+        float diameter = 200;
+        c.drawCircle(width/2, height/2, diameter, paint);
         sh.unlockCanvasAndPost(c);
-
-        //Graphics2D g = (Graphics2D) canvas.getGraphics();
-        //g.setColor(Color.black);
-        //bf.show();
-        //g.fillOval(width/2 - diameter/2, height/2 - diameter/2, diameter, diameter);
     }
 }
