@@ -88,13 +88,14 @@ public class CanvasDesktopMain {
         // canvas
         Canvas canvas = new Canvas();
         canvas.setSize(400,400);
-        frame.add(canvas);
+        canvas.setBackground(Color.white);
         canvas.setVisible(true);
+        frame.add(canvas);
         frame.setVisible(true);
 
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.setColor(Color.black);
-        g.fillRect(100, 30, 30, 30);
+        g.fillRect(10, 30, 30, 30);
         canvas.paint(g);
     }
 }
