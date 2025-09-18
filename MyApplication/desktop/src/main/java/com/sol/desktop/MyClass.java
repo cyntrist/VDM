@@ -22,7 +22,7 @@ public class MyClass {
         JFrame frame = new JFrame("Desktop");
         frame.setSize(500, 500);
         frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
 
         // elementos
