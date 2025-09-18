@@ -39,7 +39,6 @@ public class CanvasDesktopMain {
         BufferStrategy bf = frame.getBufferStrategy();
         Graphics2D g = (Graphics2D) canvas.getGraphics();
         g.setColor(Color.black);
-        g.fillRect(5, 5, 30, 30);
         bf.show();
 
         int diameter = 80;

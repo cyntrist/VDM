@@ -1,6 +1,7 @@
 package com.sol.canvas;
 
 import android.os.Bundle;
+import android.view.SurfaceView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +21,8 @@ public class CanvasActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        SurfaceView sv = findViewById(R.id.surfaceView);
+        sv.setBackgroundColor(0Xffffffff);
     }
 }
